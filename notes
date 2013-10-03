@@ -1,0 +1,46 @@
+[3,4,2] == [3,4,2]
+tail [1,2,3]
+last [1,2,3]
+head [1,2,3]
+init [1,2,3]
+length [1,2,3]
+null []
+reverse [1,2,3]
+take 3 [1,2,3]
+drop 3 [1,2,3]
+maximum [1,2,3]
+minimum [1,2,3]
+sum [1,2,3]
+product [1,2,3]
+elem 3 [1,2,3]
+take 24 [13,26..] -> first 24 multiples of 13
+take 10 (cycle [1,2,3])
+take 10 (repeat 5) -> 5 10 times
+replicate 3 10 -> [10,10,10]
+
+
+:t command to get type
+:t 'a'
+
+read "4" -> error
+
+fromIntegral (length []) + 2.3
+
+ let v1s = [(1,2),(3,4)]
+ *Main> let v2s = [(5,6),(7,8)]
+ *Main> [addVectors v1 v2 | v1 <- v1s, v2 <- v2s]
+
+ x:y:z:zs to pattern match on list of length 3
+ 
+  xs@(x:y:ys) as pattern
+  
+
+let bindings are expressions, where clause is syntactical construct
+so let bindings can be introduced almost anywhere
+
+let bindings cant be used across guards
+where clauses can
+
+pattern mactching on function parameters can only be done when defining
+functions, case expressions can be used anywhere
+(pattern match in the middle of an expression)
