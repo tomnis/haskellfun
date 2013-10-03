@@ -58,3 +58,54 @@ quicksort (x:xs) =
   let smallersorted = quicksort [a | a <- xs, a <= x]
       biggersorted  = quicksort [a | a <- xs, a > x]
   in smallersorted ++ [x] ++ biggersorted
+
+-- test partial function application
+-- multThree :: (Num a) => a -> (a -> (a -> a))
+multThree :: (Num a) => a -> a -> a -> a
+multThree x y z = x * y * z
+
+compareWithHundred :: (Num a, Ord a) => a -> Ordering
+compareWithHundred x = compare 100 x
+
+compareWithHundred' :: (Num a, Ord a) => a -> Ordering
+compareWithHundred' = compare 100
+
+divideByTen :: (Floating a) => a -> a
+divideByTen = (/ 10)
+
+applytwice :: (a -> a) -> a -> a
+applytwice f x = f (f x)
+
+-- join two lists by applying f to corresponding elements
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ _ [] = []
+zipWith' _ [] _ = []
+zipWith' f (x:xs) (y:ys) = (f x y) : zipWith' f xs ys
+
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f x y = f y x
+
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' p [] = []
+filter' p (x:xs)
+  | p x = x : filter p xs
+  | otherwise = filter p xs
+  
+-- play with collatz
+chain :: (Integral a) => a -> [a]
+chain 1 = [1]
+chain n 
+  | even n = n : chain (div n 2)
+  | odd n = n : chain (n*3 + 1)
+  
+numlongchains :: Int
+numlongchains = length (filter islong (map chain [1..100]))
+  where islong xs = length xs > 15
+  
+sum' :: (Num a) => [a] -> a
+--sum' xs = foldl (\acc x -> acc + x) 0 xs
+sum' = foldl (+) 0

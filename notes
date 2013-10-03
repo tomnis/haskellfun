@@ -44,3 +44,10 @@ where clauses can
 pattern mactching on function parameters can only be done when defining
 functions, case expressions can be used anywhere
 (pattern match in the middle of an expression)
+
+-> is right associative
+
+
+map (+3) xs 
+equivalent to
+map (\x -> x + 3) xs
